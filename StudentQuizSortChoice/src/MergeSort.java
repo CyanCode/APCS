@@ -1,11 +1,13 @@
 
-public class MergeSort extends PrintValues {
-	int[] data;
-	private int[] tempMerge;
+public class MergeSort extends Sortable {
+	Student[] data;
+	private Student[] tempMerge;
 	
-	public MergeSort(int[] data) {
+	public MergeSort(Student[] data) {
+		super(data);
+		
 		this.data = data;
-		this.tempMerge = new int[data.length];
+		this.tempMerge = new Student[data.length];
 	}
 	
 	/**
@@ -44,7 +46,7 @@ public class MergeSort extends PrintValues {
 		int k = low;
 		
 		while (i <= middle && j <= high) { //While the indexes are valid
-			if (tempMerge[i] <= tempMerge[j]) { //Merge low
+			if (tempMerge[i].score <= tempMerge[j].score) { //Merge low
 				data[k] = tempMerge[i];
 				i ++;
 			} else { //If not, merge high

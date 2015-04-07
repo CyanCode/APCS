@@ -16,7 +16,12 @@ public class Test {
 	public static void main (String args[]) throws IOException {
 		initFile();  
 		getData();
-		System.out.print("Original Scores: \n" + classroom + "\n\n");  //output of the complete class.
+		
+		//output of the complete (unsorted) class.
+		Student[] primitive = classroom.toArray(new Student[classroom.size()]);
+		System.out.println("Original Scores: ");  
+		new Sortable(primitive).printTestScores();
+		
 		promptSort();
 		inFile.close();
 	}
@@ -57,10 +62,7 @@ public class Test {
 	}
 
 	public static void promptSort() {
-		//First, compile all grades
-		int[] values = new int[classroom.size()];
-		for (int i = 0; i < values.length; i ++)
-			values[i] = classroom.get(i).score;
+		Student[] students = classroom.toArray(new Student[classroom.size()]);
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("1. Sort with Quick Sort");
@@ -69,14 +71,20 @@ public class Test {
 		int value = sc.nextInt();
 		if (value == 1) {
 			System.out.println("Sorted: "); 
-			QuickSort sort = new QuickSort(values);
-			sort.sort(0, values.length - 1);
-			sort.printArray(sort.data);
+			QuickSort sort = new QuickSort(students);
+			
+			sort.startTime();
+			sort.sort(0, students.length - 1);
+			sort.printTestScores();
+			sort.stopPrintTime();
 		} if (value == 2){
 			System.out.println("Sorted: "); 
-			MergeSort sort = new MergeSort(values);
-			sort.sort(0, values.length - 1);
-			sort.printArray(sort.data);
+			MergeSort sort = new MergeSort(students);
+			
+			sort.startTime();
+			sort.sort(0, students.length - 1);
+			sort.printTestScores();
+			sort.stopPrintTime();
 		}
 		
 		sc.close(); 

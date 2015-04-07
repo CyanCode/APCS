@@ -1,8 +1,10 @@
 
-public class QuickSort extends PrintValues {
-	int[] data;
+public class QuickSort extends Sortable {
+	Student[] data;
 	
-	public QuickSort(int[] data) {
+	public QuickSort(Student[] data) {
+		super(data);
+		
 		this.data = data;
 	}
 	
@@ -15,7 +17,7 @@ public class QuickSort extends PrintValues {
 	public void sort(int lowIndex, int highIndex) {
 		int i = lowIndex;
 		int j = highIndex;
-		int pivot = data[lowIndex + (highIndex - lowIndex) / 2]; //Pivot is the center element
+		Student pivot = data[lowIndex + (highIndex - lowIndex) / 2]; //Pivot is the center element
 		
 		while (i <= j) { //Divide into two seperated arrays
 			/*
@@ -23,9 +25,9 @@ public class QuickSort extends PrintValues {
 			 * 1. Numbers on the left which are greater than the pivot
 			 * 2. Numbers on the right which are less than the pivot
 			 */
-			while (data[i] < pivot) 
+			while (data[i].score < pivot.score) 
 				i ++;
-			while (data[j] > pivot)
+			while (data[j].score > pivot.score)
 				j --;
 			
 			if (i <= j) { //If so, exchange numbers
@@ -48,7 +50,7 @@ public class QuickSort extends PrintValues {
 	 * @param j index 2 to swap
 	 */
 	private void exchangeValues(int i, int j) {
-		int temp = data[i];
+		Student temp = data[i];
 		data[i] = data[j];
 		data[j] = temp;
 	}
