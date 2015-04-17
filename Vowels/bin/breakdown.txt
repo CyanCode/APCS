@@ -1,0 +1,33 @@
+What do we know about the words?
+
+1. Each word has a "word" and a suffix at it's end
+2. We manipulate the word and suffix individually
+3. We want to print both the PLURAL and the SUFFIX for each word
+
+RULES
+
+Plurals:
+1. If the word ends in a single consonant - Add "GH"
+2. If the word ends in a single vowel - Drop the final vowel, add 'G'
+3. If the words ends in 2 or more consonants OR vowels - Double the last letter, add 'H'
+
+Suffixes that begin with consonants:
+1. If the suffix ends in a single consonant - Add the suffix (no manipulation)
+2. If the suffix ends in a single vowel - Add the first letter of said suffix, then add the whole suffix
+3. If the suffix ends in 2 or more consonants OR vowels - Drop the leftmost letter of the whole "2 or more consonants or vowels" sequence, then add the suffix
+
+Suffixes that begin with a vowel:
+1. If the suffix ends in a consonant - Add the suffix (no manipulation)
+2. If the suffix ends in a single vowel - Drop the first letter, add the rest of the suffix
+3. If the suffix ends in 2 or more consonants OR vowels - Add first letter of the suffix, then add the whole suffix
+
+
+CLASSES
+
+Main: Calls LogicDispatch
+ConsonantSuffix: Handles methods working with suffixes beginning with Consonants
+VowelSuffix: Handles methods working with suffixes beginning with vowels
+WordCalculator: Calculates which actions to perform on sent word
+SuffixCalculator: Calculates which actions to perform on sent suffix
+WordReader: Manages file input and distribution
+LogicDispatch: Manages what should call what, started from Main

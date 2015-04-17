@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class Sortable {
 	private Student[] students;
@@ -5,6 +8,9 @@ public class Sortable {
 	
 	public Sortable(Student[] students) {
 		this.students = students;
+		
+		ArrayList<String> x = new ArrayList<String>();
+		List<String> y = x;
 	}
 	
 	/** Prints the student test scores */
